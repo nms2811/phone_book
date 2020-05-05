@@ -26,7 +26,7 @@ class CreateInfo extends Component {
                     home: false,
                     business: false,
                     other: false
-                }
+                }     
             }
         }
         this.onChangeSomething = this.onChangeSomething.bind(this);
@@ -98,7 +98,7 @@ this.setState(prevState => ({
                 <label> Other 
                     <input type = "checkbox" checked={this.state.payload.type.other} onChange={this.onChangeCheckbox} id = "other" name = "other" value = "other" />
                 </label><br />
-                <button type="button" onClick={() =>{this.props.addphone(this.state.payload);  } } className="btn-success">Add</button>
+                <button type="button" onClick={() =>{this.props.addphone(this.state.payload);  this.setState(this.state = initial)} } className="btn-success">Add</button>
             </div>
         )
     }
