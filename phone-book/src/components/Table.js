@@ -3,9 +3,32 @@ import { connect } from 'react-redux'
 import { removephone, setVisibilityFilter } from '../actions/actioncreatores'
 import {SHOW_ALL, SHOW_HOME, SHOW_BUSINESS, SHOW_OTHER} from '../actions/actiontypes';
 import {bindActionCreators} from 'redux' 
+import EditInfo from './EditInfo';
 
+function visibility() {
+    if (document.getElementsByClassName("edit_data")[0].style = "hidden")
+        return document.getElementsByClassName("edit_data")[0].style = "visible";
+    else 
+        return document.getElementsByClassName("edit_data")[0].style = "hidden";
+}
 
 class Table extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            clicked: false
+        };
+
+        this.handleClick = this.handleClick.bind(this);  
+    }
+
+    handleClick() {
+        this.setState({
+          clicked: true
+        });
+      }
+
     render() {
         return(
             <div>
@@ -46,8 +69,18 @@ class Table extends Component {
                             <tr key = {phone.id}>
                                 <td>{phone.payload.name}</td>
                                 <td>{phone.payload.number}</td>
+                                <td><button onClick = {() =>{this.props.removephone(phone.id); } }>Delete</button></td>
+                                    <td><button onClick = {this.handleClick}>EDIT</button></td><br/>
+                                <div>
+                                    {this.state.clicked ? 
+                                        <EditInfo
+                                            id = {phone.id}
+                                            payload = {phone.payload} />
+                                    : null}    
+                                </div>
                             </tr>
                         ))}
+                        
                     </tbody>
                 </table>
             ) : (<div className = "Nothing">

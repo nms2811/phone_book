@@ -1,4 +1,4 @@
-import { ADD_PHONE, REMOVE_PHONE, SET_VISIBILITY_FILTER } from './actiontypes';
+import { ADD_PHONE, EDIT_PHONE,REMOVE_PHONE, SET_VISIBILITY_FILTER } from './actiontypes';
 
 let phoneId = 0;
 
@@ -9,8 +9,14 @@ export const addphone = payload => ({
 })
 
 export const removephone = (id) => ({
-    tyoe:REMOVE_PHONE,
+    type:REMOVE_PHONE,
     id:id
+})
+
+export const editphone = (id, payload) => ({
+    type: EDIT_PHONE,
+    id:id,
+    payload
 })
 
 export const setVisibilityFilter = filter => ({
