@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 0px 100px;
 }
 
 .App-logo {
@@ -27,6 +28,59 @@
 .App-link {
   color: #61dafb;
 }
+
+nav.nav-checkbox {
+  margin: auto;
+  padding: 0px;
+  width: 405px;
+  overflow: hidden;
+  background-color: #87CEFA;
+  color: white;
+  text-align: center;
+}
+
+button {
+  background-color: #87CEFA;
+  border: 1px solid rgba(204, 204, 204, 0.541);
+  color: white;
+}
+
+ol {
+  margin: auto;
+  width: 405px;
+  margin-bottom: 20px;
+}
+
+#customer {
+  margin: auto;
+  border-collapse: collapse;
+  width: 405px;
+}
+
+#customer th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #87CEFA;
+  color: white;
+}
+
+input[type =  text] {
+  padding: 12px 20px;
+  margin: 8px 5px;
+  display: inline-block;
+  border: 1px solid #CCC;
+}
+
+.form-group-add h3 {
+  text-align:center;
+  margin:5px;
+}
+
+.contact-item-active {
+  color: rgba(172, 37, 37, 0.308);
+}
+
 
 @keyframes App-logo-spin {
   from {

@@ -29,27 +29,44 @@ class Table extends Component {
         });
       }
 
+    //   handleClick(phone) {
+    //     this.setState({
+    //       clicked: {
+    //         ...this.state.clicked,
+    //         clicked: true
+    //       },
+    //       id: {
+    //           ...this.state.id,
+    //           id: phone.id 
+    //       },
+    //       payload: {
+    //         ...this.state.payload,
+    //         payload: phone.payload
+    //       }
+    //     });
+    //   }
+
     render() {
         return(
             <div>
-            <nav styler = {{marginTop: "60px"}}>
+            <nav style = {{marginTop: "20px"}}>
                 <ol className = "contact_filter">
-                    <li className = {"contact-item" + (this.props.visibilityFilter === SHOW_ALL? 'active':'') }
+                    <li className = {"contact-item" + (this.props.visibilityFilter === SHOW_ALL? '-active':'') }
                         onClick = {() => this.props.setVisibilityFilter(SHOW_ALL)}
                     >
                     ALL   
                     </li>
-                    <li className = {"contact-item" + (this.props.visibilityFilter === SHOW_HOME? 'active':'') }
+                    <li className = {"contact-item" + (this.props.visibilityFilter === SHOW_HOME? '-active':'') }
                         onClick = {() => this.props.setVisibilityFilter(SHOW_HOME)}
                     >
                     HOME   
                     </li>
-                    <li className = {"contact-item" + (this.props.visibilityFilter === SHOW_BUSINESS? 'active':'') }
+                    <li className = {"contact-item" + (this.props.visibilityFilter === SHOW_BUSINESS? '-active':'') }
                         onClick = {() => this.props.setVisibilityFilter(SHOW_BUSINESS)}
                     >
                     BUSINESS  
                     </li>
-                    <li className = {"contact-item" + (this.props.visibilityFilter === SHOW_OTHER? 'active':'') }
+                    <li className = {"contact-item" + (this.props.visibilityFilter === SHOW_OTHER? '-active':'') }
                         onClick = {() => this.props.setVisibilityFilter(SHOW_OTHER)}
                     >
                     OTHER
@@ -57,11 +74,13 @@ class Table extends Component {
                 </ol>
             </nav>
             {this.props.todos.length !== 0 ? (
-                <table>
+                <table id = "customer">
                     <thead>
                         <tr>
                             <th>NAME</th>
                             <th>NUMBER</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,7 +89,7 @@ class Table extends Component {
                                 <td>{phone.payload.name}</td>
                                 <td>{phone.payload.number}</td>
                                 <td><button onClick = {() =>{this.props.removephone(phone.id); } }>Delete</button></td>
-                                    <td><button onClick = {this.handleClick}>EDIT</button></td><br/>
+                                <td><button onClick = {this.handleClick}>EDIT</button></td><br/>
                                 <div>
                                     {this.state.clicked ? 
                                         <EditInfo

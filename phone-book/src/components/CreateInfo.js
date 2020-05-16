@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { addphone } from '../actions/actioncreatores'
-import {bindActionCreators} from 'redux' 
+import {bindActionCreators} from 'redux'
 
 const initial = {
     payload:{
@@ -87,17 +87,26 @@ this.setState(prevState => ({
     render() {
         return (
             <div className = "form-group-add">
+                <h3>Write name and number</h3>
                 <input onChange = {this.onChangeSomething} name = "name" value = {this.state.payload.name} type = "text" placeholder = "Name" />
                 <input onChange = {this.onChangeSomething} name = "number" value = {this.state.payload.number} type = "text" placeholder = "Number" /> <br />
-                <label> Home
-                    <input type = "checkbox"  checked={this.state.payload.type.home} onChange={this.onChangeCheckbox} id = "home" name = "home" value = "home" />
-                </label><br />
-                <label> Business
-                    <input type = "checkbox" checked={this.state.payload.type.business} onChange={this.onChangeCheckbox} id = "business" name = "business" value = "business" />
-                </label><br />
-                <label> Other 
-                    <input type = "checkbox" checked={this.state.payload.type.other} onChange={this.onChangeCheckbox} id = "other" name = "other" value = "other" />
-                </label><br />
+                <nav className = " nav-checkbox">
+                    <span>
+                        <label> Home
+                            <input type = "checkbox"  checked={this.state.payload.type.home} onChange={this.onChangeCheckbox} id = "home" name = "home" value = "home" />
+                        </label>
+                    </span>
+                    <span>
+                        <label> Business
+                            <input type = "checkbox" checked={this.state.payload.type.business} onChange={this.onChangeCheckbox} id = "business" name = "business" value = "business" />
+                        </label>
+                    </span>
+                    <span>
+                        <label> Other 
+                            <input type = "checkbox" checked={this.state.payload.type.other} onChange={this.onChangeCheckbox} id = "other" name = "other" value = "other" />
+                        </label>
+                    </span>   
+                </nav>
                 <button type="button" onClick={() =>{this.props.addphone(this.state.payload);  this.setState(this.state = initial)} } className="btn-success">Add</button>
             </div>
         )
