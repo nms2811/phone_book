@@ -53,7 +53,7 @@ class EditInfo extends Component {
             <div className = "form-group-edit">
                 <input onChange = {this.onChangeSomething} name = "name" value = {this.state.payload.name} type = "text" placeholder = "Name" />
                 <input onChange = {this.onChangeSomething} name = "number" value = {this.state.payload.number} type = "text" placeholder = "Number" /> <br />
-                <button type="button" onClick={() =>{this.props.editphone(this.state.id, this.state.payload);  this.setState(this.state = initial); } } className="btn-success">Add</button>
+                <button type="button" onClick={() =>{this.props.editphone(this.state.id, this.state.payload);  this.setState(this.state = initial); document.getElementsByClassName("form-group-edit")[0].style.visibility = "hidden"} } className="btn-success">Add</button>
             </div>
         )
     }
