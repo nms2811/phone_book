@@ -5,27 +5,26 @@ import {SHOW_ALL, SHOW_HOME, SHOW_BUSINESS, SHOW_OTHER} from '../actions/actiont
 import {bindActionCreators} from 'redux' 
 import EditInfo from './EditInfo';
 
-function visibility() {
-    if (document.getElementsByClassName("edit_data")[0].style = "hidden")
-        return document.getElementsByClassName("edit_data")[0].style = "visible";
-    else 
-        return document.getElementsByClassName("edit_data")[0].style = "hidden";
-}
 
 class Table extends Component {
     constructor() {
         super();
 
         this.state = {
-            clicked: false
+            clicked: false,
+            id: "",
+            payload: {}
         };
 
         this.handleClick = this.handleClick.bind(this);  
     }
 
-    handleClick() {
+    handleClick(phone) {
         this.setState({
-          clicked: true
+          clicked: true,
+          id: phone.id,
+          payload: phone.payload
+
         });
       }
 
@@ -84,23 +83,31 @@ class Table extends Component {
                         </tr>
                     </thead>
                     <tbody>
+                        {/* button type="button"onClick={this.inputDigit(0)}
+                            Error: Maximum update depth exceeded.
+
+                            solution:
+                            <button type="button"onClick={() => this.inputDigit(1)}>1</button>
+
+                            Avoid using inline function as suggested by someone in answers, it may cause performance issue. Avoid following code, It will create instance of same function again and again whenever function will be called (lamda statement creates new instance every time).
+                            Note: and no need to pass event (e) explicitly to the function. you can access it with in the function without passing it.
+                        */}
                         {this.props.todos.map(phone => (
                             <tr key = {phone.id}>
                                 <td>{phone.payload.name}</td>
                                 <td>{phone.payload.number}</td>
                                 <td><button onClick = {() =>{this.props.removephone(phone.id); } }>Delete</button></td>
-                                <td><button onClick = {this.handleClick}>EDIT</button></td><br/>
-                                <div>
-                                    {this.state.clicked ? 
-                                        <EditInfo
-                                            id = {phone.id}
-                                            payload = {phone.payload} />
-                                    : null}    
-                                </div>
+                                <td><button onClick = {() => this.handleClick(phone)}>EDIT</button></td><br/>
                             </tr>
-                        ))}
-                        
+                        ))}   
                     </tbody>
+                    <div className = "edit-textbox">
+                        {this.state.clicked ? 
+                            <EditInfo
+                                id = {this.state.id}
+                                payload = {this.state.payload} />
+                        : null}    
+                    </div>
                 </table>
             ) : (<div className = "Nothing">
                 NO RESULTS

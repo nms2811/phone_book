@@ -32,7 +32,7 @@ class CreateInfo extends Component {
         this.onChangeSomething = this.onChangeSomething.bind(this);
         this.onChangeCheckbox = this.onChangeCheckbox.bind(this);
     }
-
+    // /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
 /* 
 this.state = {
   food: {
